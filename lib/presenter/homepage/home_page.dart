@@ -1,3 +1,4 @@
+import 'package:crypto_screen_card_1/core/assets_images.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/bottom_navigation.dart';
@@ -76,9 +77,9 @@ class _HomePageState extends State<HomePage> {
             ),
             listTileWallet(
               title: titleListTile(
-                coinInitials: Text('BTC'),
+                coinInitials: const Text('BTC'),
                 coinPrice: visible
-                    ? Text('R\$ 6.557,00')
+                    ? const Text('R\$ 6.557,00')
                     : Container(
                         height: 20,
                         width: 60,
@@ -89,9 +90,9 @@ class _HomePageState extends State<HomePage> {
                       ),
               ),
               subtitle: subtitleListTile(
-                coinName: Text('Bitcoin'),
+                coinName: const Text('Bitcoin'),
                 coinValue: visible
-                    ? Text('0.65 BTC')
+                    ? const Text('0.65 BTC')
                     : Container(
                         height: 15,
                         width: 40,
@@ -101,7 +102,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
               ),
-              leading: Image.asset('assets/images/bitcoin.PNG'),
+              leading: bitcoinImg,
               trailing: const Icon(
                 Icons.arrow_forward_ios_rounded,
                 size: 17,
@@ -114,9 +115,9 @@ class _HomePageState extends State<HomePage> {
             ),
             listTileWallet(
               title: titleListTile(
-                coinInitials: Text('ETH'),
+                coinInitials: const Text('ETH'),
                 coinPrice: visible
-                    ? Text('R\$ 7.996,00')
+                    ? const Text('R\$ 7.996,00')
                     : Container(
                         height: 20,
                         width: 60,
@@ -127,9 +128,9 @@ class _HomePageState extends State<HomePage> {
                       ),
               ),
               subtitle: subtitleListTile(
-                coinName: Text('Ethereum'),
+                coinName: const Text('Ethereum'),
                 coinValue: visible
-                    ? Text('0.94 ETH')
+                    ? const Text('0.94 ETH')
                     : Container(
                         height: 15,
                         width: 40,
@@ -139,7 +140,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
               ),
-              leading: Image.asset('assets/images/ethereum.PNG'),
+              leading: ethereumImg,
               trailing: const Icon(
                 Icons.arrow_forward_ios_rounded,
                 size: 17,
@@ -152,9 +153,9 @@ class _HomePageState extends State<HomePage> {
             ),
             listTileWallet(
               title: titleListTile(
-                coinInitials: Text('LTC'),
+                coinInitials: const Text('LTC'),
                 coinPrice: visible
-                    ? Text('R\$ 245,00')
+                    ? const Text('R\$ 245,00')
                     : Container(
                         height: 20,
                         width: 60,
@@ -165,9 +166,9 @@ class _HomePageState extends State<HomePage> {
                       ),
               ),
               subtitle: subtitleListTile(
-                coinName: Text('Litecoin'),
+                coinName: const Text('Litecoin'),
                 coinValue: visible
-                    ? Text('0.82 BTC')
+                    ? const Text('0.82 BTC')
                     : Container(
                         height: 15,
                         width: 40,
@@ -177,7 +178,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
               ),
-              leading: Image.asset('assets/images/litecoin.PNG'),
+              leading: litecoinImg,
               trailing: const Icon(
                 Icons.arrow_forward_ios_rounded,
                 size: 17,

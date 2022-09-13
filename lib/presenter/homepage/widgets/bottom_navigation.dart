@@ -1,3 +1,4 @@
+import 'package:crypto_screen_card_1/core/assets_images.dart';
 import 'package:flutter/material.dart';
 
 class bottom_navigation extends StatefulWidget {
@@ -20,17 +21,13 @@ class _bottom_navigationState extends State<bottom_navigation> {
       iconSize: 35,
       currentIndex: currentIndex,
       onTap: (index) => setState(() => currentIndex = index),
-      items: const [
+      items: [
         BottomNavigationBarItem(
-          icon: ImageIcon(
-            AssetImage('assets/images/warren_icon.png'),
-          ),
+          icon: warrenImg,
           label: 'Portifolio',
         ),
         BottomNavigationBarItem(
-          icon: ImageIcon(
-            AssetImage('assets/images/Union.png'),
-          ),
+          icon: movimentaImg,
           label: 'Movimentações',
         ),
       ],

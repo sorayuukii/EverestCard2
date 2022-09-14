@@ -1,4 +1,4 @@
-import 'package:crypto_screen_card_1/core/assets_images.dart';
+import '../../../core/assets_images.dart';
 import 'package:flutter/material.dart';
 
 class bottom_navigation extends StatefulWidget {

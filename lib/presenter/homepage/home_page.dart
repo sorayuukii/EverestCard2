@@ -1,29 +1,28 @@
-import 'package:crypto_screen_card_1/core/assets_images.dart';
+import 'widgets/requieriments.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../shared/providers/providers.dart';
 import 'widgets/bottom_navigation.dart';
-import 'widgets/list_tile_subtitle.dart';
-import 'widgets/list_tile_title.dart';
-import 'widgets/list_tile_wallet.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatefulHookConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  ConsumerState<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  bool visible = true;
-
+class _HomePageState extends ConsumerState<HomePage> {
   @override
   Widget build(BuildContext context) {
+    var visible = ref.watch(visibilityProvider.state);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(height: 50),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -37,17 +36,17 @@ class _HomePageState extends State<HomePage> {
                 ),
                 IconButton(
                   onPressed: () => setState(() {
-                    visible = !visible;
+                    visible.state = !visible.state;
                   }),
                   icon: Icon(
-                    visible ? Icons.visibility : Icons.visibility_off,
+                    visible.state ? Icons.visibility : Icons.visibility_off,
                     color: Colors.black,
                     size: 25,
                   ),
                 ),
               ],
             ),
-            visible
+            visible.state
                 ? const Text(
                     'R\$ 14.798,00',
                     style: TextStyle(
@@ -70,119 +69,46 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.grey,
               ),
             ),
-            const SizedBox(height: 35),
+            const SizedBox(height: 70),
             const Divider(
               height: 3,
               color: Colors.grey,
             ),
-            listTileWallet(
-              title: titleListTile(
-                coinInitials: const Text('BTC'),
-                coinPrice: visible
-                    ? const Text('R\$ 6.557,00')
-                    : Container(
-                        height: 20,
-                        width: 60,
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-              ),
-              subtitle: subtitleListTile(
-                coinName: const Text('Bitcoin'),
-                coinValue: visible
-                    ? const Text('0.65 BTC')
-                    : Container(
-                        height: 15,
-                        width: 40,
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-              ),
-              leading: bitcoinImg,
-              trailing: const Icon(
-                Icons.arrow_forward_ios_rounded,
-                size: 17,
-              ),
+            const Requieriments(
+              coinName: 'Bitcoin',
+              coinInitials: 'BTC',
+              coinPrice: '0.65 BTC',
+              coinValue: 'R\$ 6.557,00',
+              coinIcon: 'assets/images/bitcoin.PNG',
             ),
-            const SizedBox(height: 17),
+            const SizedBox(height: 15),
             const Divider(
               height: 3,
               color: Colors.grey,
             ),
-            listTileWallet(
-              title: titleListTile(
-                coinInitials: const Text('ETH'),
-                coinPrice: visible
-                    ? const Text('R\$ 7.996,00')
-                    : Container(
-                        height: 20,
-                        width: 60,
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-              ),
-              subtitle: subtitleListTile(
-                coinName: const Text('Ethereum'),
-                coinValue: visible
-                    ? const Text('0.94 ETH')
-                    : Container(
-                        height: 15,
-                        width: 40,
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-              ),
-              leading: ethereumImg,
-              trailing: const Icon(
-                Icons.arrow_forward_ios_rounded,
-                size: 17,
-              ),
+            const Requieriments(
+              coinName: 'Ethererum',
+              coinInitials: 'ETH',
+              coinPrice: '0.94 ETH',
+              coinValue: 'R\$ 7.996,00',
+              coinIcon: 'assets/images/ethereum.PNG',
             ),
-            const SizedBox(height: 17),
+            const SizedBox(height: 15),
             const Divider(
               height: 3,
               color: Colors.grey,
             ),
-            listTileWallet(
-              title: titleListTile(
-                coinInitials: const Text('LTC'),
-                coinPrice: visible
-                    ? const Text('R\$ 245,00')
-                    : Container(
-                        height: 20,
-                        width: 60,
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-              ),
-              subtitle: subtitleListTile(
-                coinName: const Text('Litecoin'),
-                coinValue: visible
-                    ? const Text('0.82 BTC')
-                    : Container(
-                        height: 15,
-                        width: 40,
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-              ),
-              leading: litecoinImg,
-              trailing: const Icon(
-                Icons.arrow_forward_ios_rounded,
-                size: 17,
-              ),
+            const Requieriments(
+              coinName: 'Litecoin',
+              coinInitials: 'LTC',
+              coinPrice: '0.82 LTC',
+              coinValue: 'R\$ 245,00',
+              coinIcon: 'assets/images/litecoin.PNG',
+            ),
+            const SizedBox(height: 15),
+            const Divider(
+              height: 3,
+              color: Colors.grey,
             ),
             const SizedBox(height: 17),
           ],

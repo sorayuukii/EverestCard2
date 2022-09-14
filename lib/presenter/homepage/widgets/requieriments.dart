@@ -2,13 +2,13 @@ import '../../../shared/providers/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class Requieriments extends StatefulHookConsumerWidget {
+class CriptoListItem extends StatefulHookConsumerWidget {
   final String coinName;
   final String coinInitials;
   final String coinPrice;
   final String coinValue;
   final String coinIcon;
-  const Requieriments({
+  const CriptoListItem({
     Key? key,
     required this.coinName,
     required this.coinInitials,
@@ -18,13 +18,13 @@ class Requieriments extends StatefulHookConsumerWidget {
   }) : super(key: key);
 
   @override
-  ConsumerState<Requieriments> createState() => _RequierimentsState();
+  ConsumerState<CriptoListItem> createState() => _RequierimentsState();
 }
 
-class _RequierimentsState extends ConsumerState<Requieriments> {
+class _RequierimentsState extends ConsumerState<CriptoListItem> {
   @override
   Widget build(BuildContext context) {
-    final Statevisibility = ref.watch(visibilityProvider.state);
+    final statevisibility = ref.watch(visibilityProvider.state);
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -60,7 +60,7 @@ class _RequierimentsState extends ConsumerState<Requieriments> {
         ),
         Row(
           children: [
-            Statevisibility.state
+            statevisibility.state
                 ? Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
@@ -80,14 +80,12 @@ class _RequierimentsState extends ConsumerState<Requieriments> {
                   )
                 : Column(
                     children: const [
-                      cointainer_hide_information(
-                        width: 70,
-                        height: 20,
+                      TextHideInformation(
+                        fontTextSize: 18,
                       ),
                       SizedBox(height: 4),
-                      cointainer_hide_information(
-                        width: 40,
-                        height: 15,
+                      TextHideInformation(
+                        fontTextSize: 15,
                       ),
                     ],
                   ),
@@ -107,21 +105,22 @@ class _RequierimentsState extends ConsumerState<Requieriments> {
   }
 }
 
-class cointainer_hide_information extends StatelessWidget {
-  const cointainer_hide_information(
-      {Key? key, required this.height, required this.width})
-      : super(key: key);
-  final double height;
-  final double width;
+class TextHideInformation extends StatelessWidget {
+  const TextHideInformation({
+    Key? key,
+    required this.fontTextSize,
+  }) : super(key: key);
+
+  final double fontTextSize;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height,
-      width: width,
-      decoration: BoxDecoration(
-        color: Colors.grey,
-        borderRadius: BorderRadius.circular(12),
+    return Text(
+      '********',
+      style: TextStyle(
+        fontSize: fontTextSize,
+        letterSpacing: 2,
+        fontWeight: FontWeight.bold,
       ),
     );
   }

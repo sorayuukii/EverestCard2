@@ -1,4 +1,4 @@
-import 'widgets/requieriments.dart';
+import 'package:crypto_screen_card_1/presenter/homepage/widgets/requieriments.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -54,13 +54,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                       fontWeight: FontWeight.bold,
                     ),
                   )
-                : Container(
-                    height: 30,
-                    width: 250,
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
+                : const TextHideInformation(
+                    fontTextSize: 33,
                   ),
             const Text(
               'Valor total de moedas',
@@ -74,7 +69,7 @@ class _HomePageState extends ConsumerState<HomePage> {
               height: 3,
               color: Colors.grey,
             ),
-            const Requieriments(
+            const CriptoListItem(
               coinName: 'Bitcoin',
               coinInitials: 'BTC',
               coinPrice: '0.65 BTC',
@@ -86,7 +81,7 @@ class _HomePageState extends ConsumerState<HomePage> {
               height: 3,
               color: Colors.grey,
             ),
-            const Requieriments(
+            const CriptoListItem(
               coinName: 'Ethererum',
               coinInitials: 'ETH',
               coinPrice: '0.94 ETH',
@@ -98,7 +93,7 @@ class _HomePageState extends ConsumerState<HomePage> {
               height: 3,
               color: Colors.grey,
             ),
-            const Requieriments(
+            const CriptoListItem(
               coinName: 'Litecoin',
               coinInitials: 'LTC',
               coinPrice: '0.82 LTC',

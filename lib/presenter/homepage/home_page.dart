@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../shared/providers/providers.dart';
-import 'widgets/bottom_navigation.dart';
 
 class HomePage extends StatefulHookConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -113,7 +112,6 @@ class _HomePageState extends ConsumerState<HomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: const bottom_navigation(),
     );
   }
 }

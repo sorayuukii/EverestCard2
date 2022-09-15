@@ -1,4 +1,4 @@
-import 'package:crypto_screen_card_1/presenter/homepage/widgets/requieriments.dart';
+import 'package:crypto_screen_card_1/presenter/homepage/widgets/cripto_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -54,8 +54,12 @@ class _HomePageState extends ConsumerState<HomePage> {
                       fontWeight: FontWeight.bold,
                     ),
                   )
-                : const TextHideInformation(
-                    fontTextSize: 33,
+                : const Text(
+                    'R\$ * * * * * * * *',
+                    style: TextStyle(
+                      fontSize: 27,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
             const Text(
               'Valor total de moedas',

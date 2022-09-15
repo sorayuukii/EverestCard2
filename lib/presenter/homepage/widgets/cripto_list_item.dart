@@ -18,10 +18,10 @@ class CriptoListItem extends StatefulHookConsumerWidget {
   }) : super(key: key);
 
   @override
-  ConsumerState<CriptoListItem> createState() => _RequierimentsState();
+  ConsumerState<CriptoListItem> createState() => _CriptoListItemState();
 }
 
-class _RequierimentsState extends ConsumerState<CriptoListItem> {
+class _CriptoListItemState extends ConsumerState<CriptoListItem> {
   @override
   Widget build(BuildContext context) {
     final statevisibility = ref.watch(visibilityProvider.state);
@@ -79,13 +79,21 @@ class _RequierimentsState extends ConsumerState<CriptoListItem> {
                     ],
                   )
                 : Column(
-                    children: const [
-                      TextHideInformation(
-                        fontTextSize: 18,
+                    children: [
+                      Text(
+                        statevisibility.state
+                            ? widget.coinValue
+                            : 'R\$ ********',
+                        style: const TextStyle(
+                          letterSpacing: 1,
+                        ),
                       ),
-                      SizedBox(height: 4),
-                      TextHideInformation(
-                        fontTextSize: 15,
+                      const SizedBox(height: 4),
+                      Text(
+                        statevisibility.state ? widget.coinPrice : '*******',
+                        style: const TextStyle(
+                          letterSpacing: 2,
+                        ),
                       ),
                     ],
                   ),
@@ -101,27 +109,6 @@ class _RequierimentsState extends ConsumerState<CriptoListItem> {
           ],
         ),
       ],
-    );
-  }
-}
-
-class TextHideInformation extends StatelessWidget {
-  const TextHideInformation({
-    Key? key,
-    required this.fontTextSize,
-  }) : super(key: key);
-
-  final double fontTextSize;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      '********',
-      style: TextStyle(
-        fontSize: fontTextSize,
-        letterSpacing: 2,
-        fontWeight: FontWeight.bold,
-      ),
     );
   }
 }

@@ -17,7 +17,7 @@ class _BottomNavigState extends State<BottomNavigation> {
   late int _currentIndex = 0;
   List pages = [
     const HomePage(),
-    const DetailsPage(),
+    DetailsPage(),
   ];
 
   @override

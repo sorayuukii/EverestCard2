@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/assets_images.dart';
-import '../../detailspage/details_page.dart';
+import '../../movimentspage/moviments_page.dart';
 import '../home_page.dart';
 
 class BottomNavigation extends StatefulWidget {
@@ -17,7 +17,7 @@ class _BottomNavigState extends State<BottomNavigation> {
   late int _currentIndex = 0;
   List pages = [
     const HomePage(),
-    DetailsPage(),
+    const MovimentsPage(),
   ];
 
   @override

@@ -101,7 +101,9 @@ class _CriptoListItemState extends ConsumerState<CriptoListItem> {
               children: [
                 IconButton(
                   icon: const Icon(Icons.arrow_forward_ios),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('/details-page');
+                  },
                   iconSize: 12,
                 ),
               ],

@@ -1,9 +1,13 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import '../../../shared/providers/providers.dart';
 
 class LineTitles {
   static getTitleData() => FlTitlesData(
-        show: true,
+        leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+        rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+        topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
         bottomTitles: AxisTitles(
           sideTitles: SideTitles(
             showTitles: true,
@@ -13,56 +17,62 @@ class LineTitles {
                 case 0:
                   return const GraphicIcons(
                     days: '5D',
-                    route: '',
                   );
                 case 1:
                   return const GraphicIcons(
                     days: '15D',
-                    route: '',
                   );
                 case 2:
                   return const GraphicIcons(
                     days: '30D',
-                    route: '',
                   );
                 case 3:
                   return const GraphicIcons(
                     days: '45D',
-                    route: '',
                   );
                 case 4:
                   return const GraphicIcons(
                     days: '90D',
-                    route: '',
                   );
               }
+
               return const Text('');
             },
-          ),
-        ),
-        leftTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: false,
-            reservedSize: 35,
           ),
         ),
       );
 }
 
-class GraphicIcons extends StatelessWidget {
-  const GraphicIcons({Key? key, required this.days, required this.route})
-      : super(key: key);
+class GraphicIcons extends StatefulHookConsumerWidget {
+  const GraphicIcons({
+    Key? key,
+    required this.days,
+  }) : super(key: key);
   final String days;
-  final String route;
+  //final Function buttomMaterial;
+
+  @override
+  ConsumerState<GraphicIcons> createState() => _GraphicIconsState();
+}
+
+class _GraphicIconsState extends ConsumerState<GraphicIcons> {
   @override
   Widget build(BuildContext context) {
+    var routeButtom = ref.watch(routeProvider.state);
+
     return SizedBox(
       width: 45,
       child: MaterialButton(
-          onPressed: () {
-            route;
-          },
-          child: Text(days)),
+        onPressed: () => setState(() {
+          routeButtom.state = !routeButtom.state;
+        }),
+        child: Text(
+          widget.days,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
     );
   }
 }

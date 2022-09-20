@@ -1,35 +1,34 @@
 import 'package:flutter/material.dart';
 
-class ValueCoin extends StatelessWidget {
-  final double priceCurrency;
+class QuantityCoin extends StatelessWidget {
+  final double currentPriceCoin;
+  final String initialsCoin;
 
-  const ValueCoin({
+  const QuantityCoin({
     Key? key,
-    required this.priceCurrency,
+    required this.currentPriceCoin,
+    required this.initialsCoin,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    //TODO: Refeito, revisar depois
-
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           const Text(
-            'Valor',
+            'Quantidade',
             style: TextStyle(
-              fontSize: 19,
               color: Colors.grey,
+              fontSize: 19,
             ),
           ),
           Text(
-            textAlign: TextAlign.end,
-            'R\$ ${priceCurrency.toStringAsFixed(2)}',
+            '$currentPriceCoin',
             style: TextStyle(
               fontSize: 19,
-              color: (priceCurrency < 0) ? Colors.red : Colors.black,
+              color: (currentPriceCoin < 0) ? Colors.red : Colors.black,
             ),
           ),
         ],

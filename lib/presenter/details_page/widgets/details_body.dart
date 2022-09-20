@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../portifolio/model/coin_model.dart';
-import 'button_convert_coin.dart';
+import '../../home_page/model/coin_model.dart';
+import 'button_graph_days.dart';
 import 'graphic.dart';
-import 'header_details.dart';
 import 'price_currency.dart';
-import 'qtd_currency.dart';
-import 'time_frame.dart';
+import 'quantity_coin.dart';
 import 'value_coin.dart';
-import 'variation_currency.dart';
+import 'variation_days.dart';
 
 class DatailsBody extends StatelessWidget {
   final CoinModel model;
-  final StateController<int> timeFrame;
+  final StateController daysCount;
 
   const DatailsBody({
     Key? key,
     required this.model,
-    required this.timeFrame,
+    required this.daysCount,
   }) : super(key: key);
 
   @override
@@ -38,42 +36,157 @@ class DatailsBody extends StatelessWidget {
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(15),
+            padding: const EdgeInsets.all(20),
             child: Column(
               children: [
-                HeaderDetails(
-                  nameCoin: model.nameCoin,
-                  imgIcon: model.iconCoin,
-                  ticker: model.ticker,
-                  currentPrice: model.currentPrice.toDouble(),
-                ),
-                Graphic(model: model),
-                const TimeFrame(),
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    PriceCurrency(
-                      priceCUrrency: pS(
-                        model.prices[timeFrame.state - 1],
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              model.nameCoin,
+                              style: const TextStyle(
+                                fontSize: 34,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              model.coinInitials,
+                              style: const TextStyle(
+                                fontSize: 17,
+                                color: Color.fromARGB(255, 117, 118, 128),
+                              ),
+                            ),
+                            const Text(
+                              'R\$ 10.000,00',
+                              style: TextStyle(
+                                fontSize: 30,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Container(
+                          height: MediaQuery.of(context).size.height * 0.12,
+                          width: MediaQuery.of(context).size.width * 0.15,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            //TODO: Lembrar de preencher
+                            image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: AssetImage(model.iconCoin),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    VariationCurrency(
-                      variationCurrency: (-model.prices.first.toDouble() +
-                          model.prices[timeFrame.state - 1].toDouble()),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.10),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.6,
                     ),
-                    QtdCoin(
-                      priceCUrrency: model.coinBalance.toDouble(),
-                      initialsCoin: model.ticker,
-                    ),
-                    ValueCoin(
-                        priceCurrency: pS(
-                      model.prices[timeFrame.state - 1] * model.coinBalance,
-                    )),
+                    // const SizedBox(height: 100),
                   ],
                 ),
-                ButtonConvertCoin(
+                Graphic(model: model),
+                Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        daysCount.state = 5;
+                      },
+                      child: const ButtonGraphDays(
+                        days: 5,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        daysCount.state = 15;
+                      },
+                      child: const ButtonGraphDays(
+                        days: 15,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        daysCount.state = 30;
+                      },
+                      child: const ButtonGraphDays(
+                        days: 30,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        daysCount.state = 45;
+                      },
+                      child: const ButtonGraphDays(
+                        days: 45,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        daysCount.state = 90;
+                      },
+                      child: const ButtonGraphDays(
+                        days: 90,
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    const SizedBox(height: 10),
+                    //pega o primeiro valor da lista equivalente ao daysCount
+                    CurrentPriceCoin(
+                      currentPriceCoin: model.coord[daysCount.state - 1],
+                    ),
+                    const Divider(
+                      height: 10,
+                    ),
+                    //pega os primeiros valores de cada lista e soma com o valor equivalente ao daysCount - 1
+                    VariationDays(
+                      variationWithDays: (model.coord.first +
+                          model.coord[daysCount.state - 1]),
+                    ),
+                    const Divider(
+                      height: 10,
+                    ),
+                    //coinquantity normal da lista
+                    QuantityCoin(
+                      currentPriceCoin: model.coinQuantity,
+                      initialsCoin: model.coinInitials,
+                    ),
+                    const Divider(
+                      height: 10,
+                    ),
+                    //pega o daysCount e multiplica pela quantidade
+                    ValueCoin(
+                      priceCurrency:
+                          model.coord[daysCount.state - 1] * model.coinQuantity,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 60),
+                MaterialButton(
+                  color: const Color.fromARGB(230, 207, 52, 41),
+                  minWidth: MediaQuery.of(context).size.width,
+                  height: 50,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(7),
+                  ),
                   onPressed: () {
-                    //TODO: TO BE IMPLEMENTED
+                    //TODO: Pagina de conversao de moedas
                   },
+                  child: const Text(
+                    'Converter moeda',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+                  ),
                 ),
               ],
             ),

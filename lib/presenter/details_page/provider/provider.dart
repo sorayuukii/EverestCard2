@@ -1,9 +1,8 @@
-import 'package:decimal/decimal.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../portifolio/model/coin_model.dart';
+import '../../home_page/model/coin_model.dart';
 
-final timeFrameProvider = StateProvider<int>(
+final daysCountProvider = StateProvider<int>(
   (ref) => 5,
 );
 
@@ -18,13 +17,13 @@ class DetailsAssetNotifier extends StateNotifier<CoinModel> {
   DetailsAssetNotifier()
       : super(
           CoinModel(
-            coinBalance: Decimal.parse('1'),
-            currentPrice: Decimal.parse('1'),
+            coinQuantity: 1,
+            priceCurrent: 1,
             iconCoin: '',
             nameCoin: '',
-            prices: [],
-            ticker: '',
-            variation: 1.2,
+            coord: [],
+            coinInitials: '',
+            coinVariation: 1.2,
           ),
         );
 }

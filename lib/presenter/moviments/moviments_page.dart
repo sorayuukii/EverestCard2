@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../portifolio/provider/provider.dart';
-import '../portifolio/view/portifolio.dart';
+import '../home_page/provider/provider.dart';
+import '../home_page/view/crypto_page.dart';
 
-class MovementsPage extends HookConsumerWidget {
-  const MovementsPage({Key? key}) : super(key: key);
+class MovimentsPage extends HookConsumerWidget {
+  const MovimentsPage({Key? key}) : super(key: key);
 
   static const routeName = '/moviments-page';
 
@@ -18,7 +18,7 @@ class MovementsPage extends HookConsumerWidget {
           leading: IconButton(
             onPressed: () {
               pageIndex.state = 1;
-              Navigator.pushNamed(context, PortifolioPage.routeName);
+              Navigator.pushNamed(context, CryptoPage.routeName);
             },
             icon: const Icon(Icons.arrow_back_ios_new_outlined,
                 color: Colors.black),

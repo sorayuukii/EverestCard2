@@ -17,7 +17,7 @@ class LineChartGraphic extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final daysCount = ref.watch(daysCountProvider.state).state;
     //pega lista no coin model pela index
-    List<FlSpot> generateList() {
+    generateList() {
       List<FlSpot> spotList = [];
       for (var i = 0; i <= daysCount; i++) {
         spotList.add(FlSpot(i.toDouble(), model.coord[i].toDouble()));

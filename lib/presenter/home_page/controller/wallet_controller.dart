@@ -12,13 +12,4 @@ class WalletController extends ChangeNotifier {
   ) {
     coins = coinRepo.coins();
   }
-
-  //para caso eu use algum dia
-  // double getWallet() {
-  //   double total = 0.0;
-  //   for (CoinModel coin in coins) {
-  //     total = 100;
-  //   }
-  //   return total;
-  // }
 }

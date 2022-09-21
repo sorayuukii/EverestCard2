@@ -3,6 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../home_page/model/coin_model.dart';
 import 'button_graph_days.dart';
+import 'convert_coins_button.dart';
 import 'line_chart_graphic.dart';
 import 'price_currency.dart';
 import 'quantity_coin.dart';
@@ -175,24 +176,7 @@ class DetailsBody extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 60),
-                MaterialButton(
-                  color: const Color.fromARGB(230, 207, 52, 41),
-                  minWidth: MediaQuery.of(context).size.width,
-                  height: 50,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(7),
-                  ),
-                  onPressed: () {
-                    //TODO: Pagina de conversao de moedas
-                  },
-                  child: const Text(
-                    'Converter moeda',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
+                const ConvertCoinsButton(),
               ],
             ),
           ),

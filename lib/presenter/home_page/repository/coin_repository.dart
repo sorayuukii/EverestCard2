@@ -32,6 +32,15 @@ class CoinRepository {
         coinQuantity: (0.51),
         coord: coord,
       ),
+      CoinModel(
+        nameCoin: 'Kupocoin',
+        coinInitials: 'KPC',
+        iconCoin: 'assets/images/kupo.png',
+        coinVariation: 12.3,
+        priceCurrent: (34.01),
+        coinQuantity: (2.22),
+        coord: coord,
+      ),
     ];
     return coins;
   }

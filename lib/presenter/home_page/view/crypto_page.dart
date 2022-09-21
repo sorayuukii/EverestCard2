@@ -92,7 +92,7 @@ class CryptoPage extends HookConsumerWidget {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: walletController.coins.length,
+              itemCount: walletController.coins.length, //valor total =3
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () => mostrarDetalhes(walletController.coins[index]),

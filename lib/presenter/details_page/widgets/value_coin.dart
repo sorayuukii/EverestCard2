@@ -10,8 +10,6 @@ class ValueCoin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //TODO: Refeito, revisar depois
-
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Row(

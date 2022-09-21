@@ -11,7 +11,7 @@ class WalletInfo extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final viewWalletValue = ref.watch(viewWalletValueProvider.state);
-    final walletController = ref.watch(walletControllerProvider);
+    //final walletController = ref.watch(walletControllerProvider);
 
     return Visibility(
       child: viewWalletValue.state

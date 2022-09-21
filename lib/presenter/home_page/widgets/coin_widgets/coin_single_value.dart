@@ -4,9 +4,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../model/coin_model.dart';
 import '../../provider/provider.dart';
 
-class CoinPercentage extends HookConsumerWidget {
+class SingleCoinValue extends HookConsumerWidget {
   final CoinModel coin;
-  const CoinPercentage({
+  const SingleCoinValue({
     Key? key,
     required this.coin,
   }) : super(key: key);

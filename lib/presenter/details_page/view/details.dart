@@ -18,6 +18,6 @@ class DetailsPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final daysCount = ref.watch(daysCountProvider.state);
-    return DatailsBody(model: model, daysCount: daysCount);
+    return DetailsBody(model: model, daysCount: daysCount);
   }
 }

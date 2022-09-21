@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
 import '../../model/coin_model.dart';
 import '../../provider/provider.dart';
 
@@ -13,7 +14,6 @@ class CoinBalance extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Size size = MediaQuery.of(context).size;
     final viewWalletValue = ref.watch(viewWalletValueProvider.state);
 
     return Visibility(

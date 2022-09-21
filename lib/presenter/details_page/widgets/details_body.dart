@@ -3,17 +3,17 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../home_page/model/coin_model.dart';
 import 'button_graph_days.dart';
-import 'graphic.dart';
+import 'line_chart_graphic.dart';
 import 'price_currency.dart';
 import 'quantity_coin.dart';
 import 'value_coin.dart';
 import 'variation_days.dart';
 
-class DatailsBody extends StatelessWidget {
+class DetailsBody extends StatelessWidget {
   final CoinModel model;
   final StateController daysCount;
 
-  const DatailsBody({
+  const DetailsBody({
     Key? key,
     required this.model,
     required this.daysCount,
@@ -70,28 +70,33 @@ class DatailsBody extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Container(
+                        SizedBox(
                           height: MediaQuery.of(context).size.height * 0.12,
                           width: MediaQuery.of(context).size.width * 0.15,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            //TODO: Lembrar de preencher
-                            image: DecorationImage(
-                              fit: BoxFit.fill,
-                              image: AssetImage(model.iconCoin),
+                          // decoration: BoxDecoration(
+                          //   shape: BoxShape.circle,
+                          //   //TODO: Lembrar de preencher, lembrei ? =>
+                          //   image: DecorationImage(
+                          //     fit: BoxFit.fill,
+                          //     image: AssetImage(model.iconCoin),
+                          //   ),
+                          // ),
+                          child: ClipOval(
+                            child: Image.asset(
+                              model.iconCoin,
                             ),
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.10),
+                    SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.010),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.6,
                     ),
-                    // const SizedBox(height: 100),
                   ],
                 ),
-                Graphic(model: model),
+                LineChartGraphic(model: model),
                 Row(
                   children: [
                     GestureDetector(

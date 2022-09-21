@@ -10,7 +10,7 @@ class WalletController extends ChangeNotifier {
   WalletController(
     this.coinRepo,
   ) {
-    coins = coinRepo.getCoins();
+    coins = coinRepo.coins();
   }
 
   //para caso eu use algum dia

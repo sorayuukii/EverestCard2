@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../provider/provider.dart';
-
 class VariationDays extends HookConsumerWidget {
   final double variationWithDays;
 
@@ -13,7 +11,6 @@ class VariationDays extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final daysCount = ref.watch(daysCountProvider.state);
     final double variationDays = variationWithDays;
 
     return Padding(

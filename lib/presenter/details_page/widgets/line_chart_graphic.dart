@@ -5,10 +5,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../home_page/model/coin_model.dart';
 import '../provider/provider.dart';
 
-class Graphic extends HookConsumerWidget {
+class LineChartGraphic extends HookConsumerWidget {
   final CoinModel model;
 
-  const Graphic({
+  const LineChartGraphic({
     Key? key,
     required this.model,
   }) : super(key: key);
@@ -26,14 +26,14 @@ class Graphic extends HookConsumerWidget {
     }
 
     return SizedBox(
-      height: MediaQuery.of(context).size.height - 600,
+      height: MediaQuery.of(context).size.height - 650,
       width: MediaQuery.of(context).size.width - 40,
       child: LineChart(
         LineChartData(
           minX: 0,
           maxX: daysCount.toDouble(),
           minY: 0,
-          maxY: 5,
+          maxY: 40,
           titlesData: FlTitlesData(show: false),
           gridData: FlGridData(
             show: false,
@@ -47,6 +47,8 @@ class Graphic extends HookConsumerWidget {
             ),
           ],
         ),
+        swapAnimationDuration: const Duration(milliseconds: 450),
+        swapAnimationCurve: Curves.decelerate,
       ),
     );
   }

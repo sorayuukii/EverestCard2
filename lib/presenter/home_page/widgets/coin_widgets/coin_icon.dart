@@ -7,7 +7,7 @@ class CoinIcon extends StatelessWidget {
   }) : super(key: key);
 
   final String coinIcon;
-  //TODO: Refeito, revisar depois
+  //TODO: arrumado, mas melhor dar mais uma olhada depois
   @override
   Widget build(BuildContext context) {
     return Expanded(

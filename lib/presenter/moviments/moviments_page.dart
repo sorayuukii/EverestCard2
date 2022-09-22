@@ -13,6 +13,7 @@ class MovimentsPage extends HookConsumerWidget {
         appBar: AppBar(
           foregroundColor: Colors.black,
           backgroundColor: Colors.white,
+          elevation: 1,
           title: const Text(
             'Movimentaçoes',
             style: TextStyle(color: Colors.black),

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/assets_images.dart';
-import '../../detailspage/details_page.dart';
-import '../home_page.dart';
+import '../../../core/assets_icons_images.dart';
+import '../../moviments/moviments_page.dart';
+import '../view/crypto_page.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({
     Key? key,
   }) : super(key: key);
-
+  static const routeName = '/bottomnav-page';
   @override
   State<BottomNavigation> createState() => _BottomNavigState();
 }
@@ -16,8 +16,8 @@ class BottomNavigation extends StatefulWidget {
 class _BottomNavigState extends State<BottomNavigation> {
   late int _currentIndex = 0;
   List pages = [
-    const HomePage(),
-    const DetailsPage(),
+    const CryptoPage(),
+    const MovimentsPage(),
   ];
 
   @override
